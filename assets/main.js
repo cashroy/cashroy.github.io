@@ -5,8 +5,6 @@
 
   // ?motion previews the animations even when the system asks for reduced motion.
   if (/[?&]motion\b/.test(location.search)) root.classList.add("force-motion");
-  var reduce = !root.classList.contains("force-motion") &&
-               window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   var nav = document.querySelector(".nav");
   var ticking = false;
@@ -32,7 +30,7 @@
   });
 
   var items = document.querySelectorAll(".reveal");
-  if ("IntersectionObserver" in window && !reduce) {
+  if ("IntersectionObserver" in window) {        // (with reduced motion the reveal is a plain fade)
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
@@ -44,7 +42,7 @@
   }
 
   // Images fade in when they've loaded instead of popping in.
-  if (!reduce) {
+  {
     document.querySelectorAll("main img").forEach(function (img) {
       if (img.complete && img.naturalWidth) return;           // already there: leave it alone
       img.classList.add("js-fade");
