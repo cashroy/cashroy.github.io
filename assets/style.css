@@ -166,6 +166,17 @@ kbd {
 }
 @keyframes sheen { to { transform: translateX(100%); } }
 
+.shots:has(.shot-img) { grid-template-columns: repeat(3, 1fr); align-items: start; }
+.shot-img { margin: 0; }
+.shot-img img {
+  width: 100%; height: auto; border-radius: 14px; background: var(--paper);
+  box-shadow: 0 0 0 4px var(--paper), 0 30px 60px -28px rgba(60, 0, 0, .7);
+  transition: transform .5s var(--ease);
+}
+.shot-img:hover img { transform: translateY(-6px); }
+.shot-img figcaption { margin-top: 16px; font-weight: 800; font-size: 15px; }
+@media (max-width: 900px) { .shots:has(.shot-img) { grid-template-columns: 1fr; gap: 36px; } }
+
 /* ---- steps ---- */
 .steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); gap: 20px; counter-reset: s; }
 .steps li {
