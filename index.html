@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>cashroy — Engineering student &amp; builder</title>
-  <meta name="description" content="cashroy, engineering student at the University of Waikato, New Zealand. Projects: CashVoice and UniNote.">
+  <title>cashroy</title>
+  <meta name="description" content="Apps by cashroy: CashVoice and UniNote.">
   <meta name="theme-color" content="#e10600">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='26' fill='%23e10600'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,36 +17,32 @@
     <div class="wrap">
       <a class="brand" href="./">cashroy<span class="dot">.</span></a>
       <nav class="nav-links" aria-label="Main">
-        <a href="#projects">Projects</a>
-        <a href="https://github.com/cashroy">GitHub</a>
+        <a href="#apps">Apps</a>
+        <a href="#contact">Contact</a>
       </nav>
     </div>
   </header>
 
   <main>
-    <div class="hero">
+    <div class="hero home-hero">
       <div class="wrap">
         <h1><span class="line rise" style="--d:.08s">cashroy<span class="red">.</span></span></h1>
         <span class="underline-draw" aria-hidden="true"></span>
       </div>
     </div>
 
-    <section id="projects" style="padding-top:0">
+    <section id="apps" style="padding-top:0">
       <div class="wrap">
         <div class="section-head reveal">
-          <div>
-            <span class="eyebrow">Projects</span>
-            <h2 style="margin-top:16px">Things I've built<span class="red">.</span></h2>
-          </div>
-          <p class="muted">Free downloads for Windows. Source on GitHub.</p>
+          <h2>Apps<span class="red">.</span></h2>
         </div>
 
         <div class="cards">
           <a class="card reveal" href="cashvoice/">
             <span class="arrow" aria-hidden="true">→</span>
-            <span class="num">01</span>
+            <img class="icon" src="cashvoice/icon.svg" alt="" width="56" height="56">
             <h3>CashVoice</h3>
-            <p>A system-wide voice changer and soundboard. It hooks your real microphone, so Discord, OBS and games just work, with no virtual cable needed.</p>
+            <p>Voice changer and soundboard for Windows. Works in Discord, games, anything that uses your mic.</p>
             <div class="tags"><span class="tag">Windows</span><span class="tag">C++</span><span class="tag">.NET</span></div>
           </a>
 
@@ -54,18 +50,32 @@
             <span class="arrow" aria-hidden="true">→</span>
             <img class="icon" src="uninote/icon.png" alt="" width="56" height="56">
             <h3>UniNote</h3>
-            <p>An AI university notes organiser. Drop in any file and Claude files it by year, semester and paper, then writes summaries, tests and flashcards.</p>
+            <p>Keeps uni notes sorted by paper. Drop a file in and it gets filed, summarised and turned into flashcards.</p>
             <div class="tags"><span class="tag">Windows</span><span class="tag">Electron</span><span class="tag">Claude</span></div>
           </a>
 
           <a class="card ghost reveal" style="--d:.2s" href="https://github.com/cashroy">
             <span class="arrow" aria-hidden="true">→</span>
-            <span class="num">03</span>
             <h3>More on GitHub</h3>
-            <p>Experiments, uni work and whatever I'm building next.</p>
+            <p>Everything else I'm working on.</p>
             <div class="tags"><span class="tag">github.com/cashroy</span></div>
           </a>
         </div>
+      </div>
+    </section>
+
+    <section class="band" id="contact">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <h2>Contact<span style="color:var(--ink)">.</span></h2>
+        </div>
+        <ul class="contact reveal">
+          <li><a href="mailto:charlie.ruffy@gmail.com"><span class="value">charlie.ruffy@gmail.com</span><span class="label">Email</span></a></li>
+          <li><a href="https://www.instagram.com/charlierufff/"><span class="value">@charlierufff</span><span class="label">Instagram</span></a></li>
+          <li><a href="https://www.tiktok.com/@charlierufff"><span class="value">@charlierufff</span><span class="label">TikTok</span></a></li>
+          <li><a href="https://www.linkedin.com/search/results/people/?keywords=Charlie%20Ruffell"><span class="value">Charlie Ruffell</span><span class="label">LinkedIn</span></a></li>
+          <li><a href="https://github.com/cashroy"><span class="value">cashroy</span><span class="label">GitHub</span></a></li>
+        </ul>
       </div>
     </section>
   </main>
