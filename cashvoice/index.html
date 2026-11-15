@@ -37,13 +37,13 @@
           Discord, OBS and games pick it up like normal. No virtual cable to set up.
         </p>
         <div class="btns rise" style="--d:.34s">
-          <a class="btn primary big" href="https://github.com/cashroy/CashVoice/releases/latest/download/CashVoice-Setup.exe">
+          <a class="btn primary big" data-dl href="https://github.com/cashroy/CashVoice/releases/latest/download/CashVoice-Setup.exe">
             <svg class="down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12M6 10l6 6 6-6M4 20h16"/></svg>
             Download for Windows
           </a>
           <a class="btn" href="https://github.com/cashroy/CashVoice">View on GitHub</a>
         </div>
-        <p class="fineprint muted rise" style="--d:.42s">Free · Windows 10 &amp; 11 · x64 and ARM64 · Early release (v0.1)</p>
+        <p class="fineprint muted rise" style="--d:.42s"><span id="cv-version">Early release</span> · Free · Windows 10 &amp; 11 · x64 and ARM64</p>
       </div>
     </div>
 
@@ -97,7 +97,7 @@
           <p><strong>Heads up:</strong> the installer isn't code-signed yet, so Windows SmartScreen may warn you. Choose <em>More info → Run anyway</em>. To undo everything, untick your mic and Apply, or just uninstall.</p>
         </div>
         <div class="btns reveal">
-          <a class="btn primary" href="https://github.com/cashroy/CashVoice/releases/latest/download/CashVoice-Setup.exe">Download CashVoice</a>
+          <a class="btn primary" data-dl href="https://github.com/cashroy/CashVoice/releases/latest/download/CashVoice-Setup.exe">Download CashVoice</a>
           <a class="btn" href="https://github.com/cashroy/CashVoice/releases">All releases</a>
         </div>
       </div>
@@ -111,5 +111,28 @@
     </div>
   </footer>
   <script src="../assets/main.js"></script>
+  <script>
+    // Until the first GitHub release exists, don't send people to a 404.
+    (function () {
+      fetch("https://api.github.com/repos/cashroy/CashVoice/releases/latest", { headers: { Accept: "application/vnd.github+json" } })
+        .then(function (r) {
+          if (r.status === 404) {
+            document.querySelectorAll("a[data-dl]").forEach(function (a) {
+              a.removeAttribute("href");
+              a.setAttribute("aria-disabled", "true");
+              a.classList.add("soon");
+              a.lastChild.textContent = " Coming soon";
+            });
+            document.getElementById("cv-version").textContent = "First release coming soon";
+            return null;
+          }
+          return r.ok ? r.json() : null;
+        })
+        .then(function (rel) {
+          if (rel && rel.tag_name) document.getElementById("cv-version").textContent = "Version " + rel.tag_name.replace(/^v/, "");
+        })
+        .catch(function () { /* offline or rate-limited: keep the normal link */ });
+    })();
+  </script>
 </body>
 </html>

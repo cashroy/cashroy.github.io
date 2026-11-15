@@ -137,6 +137,7 @@ section { padding: clamp(64px, 10vw, 128px) 0; }
 .btn.big { min-height: 72px; padding: 0 40px; font-size: 20px; }
 .btn svg { width: 20px; height: 20px; flex: none; transition: transform .3s var(--ease); }
 .btn:hover svg.down { transform: translateY(3px); }
+.btn.soon { cursor: default; opacity: .75; pointer-events: none; }
 .btn small { font-weight: 600; opacity: .8; font-size: 14px; }
 .fineprint { font-size: 14px; margin-top: 18px; }
 
