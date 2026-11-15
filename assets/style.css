@@ -384,8 +384,66 @@ body { animation: page-in .8s var(--ease) both; }
 
 /* Round full stops after the logo and headings (LT Superior's own "." is square). The "." stays
    in the text for screen readers and copy-paste; it's drawn as a circle in its own colour. */
-.brand .dot, h1 .red, h2 > span:last-child {
+.brand .dot, .mega .dot, h1 .red, h2 > span:last-child {
   display: inline-block; width: .2em; height: .2em; margin-left: .05em;
   border-radius: 50%; background: currentColor;
   text-indent: 100%; overflow: hidden; white-space: nowrap; vertical-align: baseline;
+}
+
+/* =====================================================================================
+   Landing (home): the first screen is just the logo; it glides into the header on scroll.
+   ===================================================================================== */
+.intro {
+  position: relative; padding: 0;
+  min-height: calc(100vh - 68px);
+  min-height: calc(100svh - 68px);        /* svh: the screen without mobile browser bars */
+  display: grid; place-items: center;
+}
+/* Same weight, tracking and round dot as the header logo, so the hand-over is seamless.
+   Sized by width and height, so it also fits phones held sideways. */
+.mega {
+  margin: 0; color: var(--paper); font-weight: 900; letter-spacing: -0.03em;
+  line-height: 1; white-space: nowrap;
+  font-size: min(clamp(60px, 19vw, 240px), 30vh);
+  font-size: min(clamp(60px, 19vw, 240px), 30svh);
+  transform: translateY(-34px);            /* centred on the whole screen, header included */
+}
+.mega .dot { color: var(--ink); }
+.mega-in { display: inline-block; animation: mega-in 1.4s var(--ease) .1s both; }
+@keyframes mega-in { from { opacity: 0; transform: translateY(.16em); filter: blur(10px); } }
+
+/* With JavaScript (class set in <head>): the logo is pinned to the screen and main.js moves
+   it onto the header logo; the header logo and links stay hidden until it arrives. */
+.js-intro .mega {
+  position: fixed; left: 50%; top: 50%; z-index: 20; pointer-events: none;
+  transform: translate(-50%, -50%); transform-origin: 50% 50%; will-change: transform, opacity;
+}
+.js-intro .nav .brand { visibility: hidden; }
+.js-intro.intro-done .nav .brand { visibility: visible; }
+.js-intro.intro-done .mega { visibility: hidden; }
+.js-intro .nav-links { opacity: var(--links, 0); transform: translateY(calc((1 - var(--links, 0)) * -6px)); }
+.js-intro:not(.links-on) .nav-links { pointer-events: none; }
+.js-intro.nav-focus .nav-links { opacity: 1; transform: none; pointer-events: auto; }
+.js-intro:not(.intro-done) .nav { box-shadow: none; }
+
+/* A quiet hint to scroll. */
+.intro-cue {
+  position: absolute; left: 50%; bottom: max(24px, env(safe-area-inset-bottom)); margin-left: -1px;
+  width: 2px; height: 56px; overflow: hidden; background: rgba(255, 255, 255, .28);
+  opacity: calc(1 - var(--p, 0) * 4);
+}
+.intro-cue span {
+  position: absolute; left: 0; right: 0; top: 0; height: 40%; background: var(--paper);
+  animation: cue 2.2s 1.6s var(--ease-io) infinite both;
+}
+@keyframes cue { from { transform: translateY(-110%); } to { transform: translateY(260%); } }
+@media (max-height: 480px) { .intro-cue { height: 36px; bottom: 14px; } }
+
+@media (prefers-reduced-motion: reduce) {
+  :root:not(.force-motion) .mega-in { animation-name: fade-in; }
+  :root:not(.force-motion) .intro-cue span { animation: none; height: 100%; opacity: .55; }
+}
+@media print {
+  .js-intro .mega { position: static; transform: none; opacity: 1; }
+  .js-intro .nav .brand, .js-intro .nav-links { visibility: visible; opacity: 1; }
 }

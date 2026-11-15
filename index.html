@@ -21,6 +21,12 @@
   <link rel="preload" href="assets/fonts/LTSuperior-Black.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="preload" href="assets/fonts/LTSuperior-Regular.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="stylesheet" href="assets/style.css">
+  <!-- Set before first paint so the header logo never flashes before the landing logo takes over. -->
+  <script>
+    document.documentElement.classList.add("js-intro");
+    // If main.js never runs (blocked/failed), fall back to the plain static layout.
+    setTimeout(function () { if (!window.cvIntro) document.documentElement.classList.remove("js-intro"); }, 4000);
+  </script>
 </head>
 <body>
   <header class="nav">
@@ -35,10 +41,11 @@
   </header>
 
   <main>
-    <div class="hero home-hero">
-      <div class="wrap">
-        <h1><span class="line rise" style="--d:.08s">cashroy<span class="red">.</span></span></h1>
-      </div>
+    <!-- Landing: the first screen is just the logo. As you scroll it glides into the header
+         (main.js); without JavaScript it simply sits in the middle of this screen. -->
+    <div class="hero intro">
+      <h1 class="mega" id="mega"><span class="mega-in">cashroy<span class="dot">.</span></span></h1>
+      <a class="intro-cue" href="#apps" aria-label="Scroll down to the apps"><span></span></a>
     </div>
 
     <section id="apps" style="padding-top:0">
