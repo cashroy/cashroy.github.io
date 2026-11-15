@@ -426,22 +426,23 @@ body { animation: page-in .8s var(--ease) both; }
 .js-intro.nav-focus .nav-links { opacity: 1; transform: none; pointer-events: auto; }
 .js-intro:not(.intro-done) .nav { box-shadow: none; }
 
-/* A quiet hint to scroll. */
-.intro-cue {
-  position: absolute; left: 50%; bottom: max(24px, env(safe-area-inset-bottom)); margin-left: -1px;
-  width: 2px; height: 56px; overflow: hidden; background: rgba(255, 255, 255, .28);
-  opacity: calc(1 - var(--p, 0) * 4);
+/* A soft white glow along the bottom edge, like light from the page below: a quiet hint that
+   there's more. It breathes very slowly and fades away as you scroll. */
+.intro { overflow: hidden; isolation: isolate; }
+.intro::after {
+  content: ""; position: absolute; z-index: -1; pointer-events: none;
+  left: -10%; right: -10%; bottom: 0; height: 42%;
+  background: radial-gradient(60% 75% at 50% 100%, rgba(255, 255, 255, .26), rgba(255, 255, 255, .08) 45%, rgba(255, 255, 255, 0) 72%);
+  filter: blur(12px);
+  opacity: calc(1 - var(--p, 0) * 2.5);
+  animation: glow-in 2s var(--ease) .5s both, glow-breathe 6s var(--ease-io) 2.5s infinite alternate;
 }
-.intro-cue span {
-  position: absolute; left: 0; right: 0; top: 0; height: 40%; background: var(--paper);
-  animation: cue 2.2s 1.6s var(--ease-io) infinite both;
-}
-@keyframes cue { from { transform: translateY(-110%); } to { transform: translateY(260%); } }
-@media (max-height: 480px) { .intro-cue { height: 36px; bottom: 14px; } }
+@keyframes glow-in { from { opacity: 0; } }
+@keyframes glow-breathe { to { transform: scaleY(.82); } }
 
 @media (prefers-reduced-motion: reduce) {
   :root:not(.force-motion) .mega-in { animation-name: fade-in; }
-  :root:not(.force-motion) .intro-cue span { animation: none; height: 100%; opacity: .55; }
+  :root:not(.force-motion) .intro::after { animation: glow-in 2s var(--ease) .5s both; }
 }
 @media print {
   .js-intro .mega { position: static; transform: none; opacity: 1; }
