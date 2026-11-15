@@ -312,3 +312,106 @@ footer a:hover { color: var(--red); }
   .reveal { opacity: 1; transform: none; }
   html { scroll-behavior: auto; }
 }
+
+/* setup: one block per platform */
+.setup-os { font-size: clamp(22px, 3vw, 28px); font-weight: 900; margin: 0 0 18px; }
+.callout + .setup-os { margin-top: clamp(40px, 6vw, 64px); }
+.fineprint a { color: inherit; }
+code { font: 600 0.9em/1 ui-monospace, "SF Mono", Consolas, monospace; padding: 2px 6px; border-radius: 6px; background: rgba(11, 11, 11, .06); }
+
+/* =====================================================================================
+   Landing + motion (2026-11)
+   ===================================================================================== */
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* Taller logo: same width, stretched up from the baseline. */
+.tall { display: inline-block; transform: scaleY(1.34); transform-origin: 50% 78%; }
+.brand { font-size: 21px; letter-spacing: -0.055em; }   /* same tracking as the big landing logo */
+
+/* Landing screen: nothing but the logo; it flies into the header on scroll (main.js). */
+.intro {
+  min-height: calc(100svh - 68px); padding: 0; margin-bottom: clamp(56px, 9vw, 112px);
+  display: flex; align-items: flex-end; justify-content: center;
+}
+.mega {
+  position: fixed; left: 50%; top: 50%; z-index: 20; pointer-events: none;
+  transform: translate(-50%, -50%); transform-origin: 50% 50%;
+  color: var(--paper); font-weight: 900; line-height: 1; white-space: nowrap;
+  font-size: clamp(72px, 21vw, 300px); letter-spacing: -0.055em;
+}
+.mega .dot { color: var(--ink); }
+.mega .l { display: inline-block; animation: letter .9s var(--ease) both; animation-delay: calc(.12s + var(--i) * .055s); }
+.mega .l.dot { animation: dot-drop .8s cubic-bezier(.3, 1.5, .5, 1) both; animation-delay: .62s; }
+@keyframes letter { from { opacity: 0; transform: translateY(.32em); } }
+@keyframes dot-drop { from { opacity: 0; transform: translateY(-1.2em) scale(.4); } }
+
+.has-intro .nav .brand { visibility: hidden; }
+.has-intro.intro-done .nav .brand { visibility: visible; }
+.has-intro.intro-done .mega { visibility: hidden; }
+.has-intro .nav-links { opacity: var(--intro, 0); transform: translateY(calc((1 - var(--intro, 0)) * -8px)); }
+.has-intro:not(.intro-done) .nav { box-shadow: none; }
+
+.intro-cue {
+  display: block; width: 2px; height: 64px; margin-bottom: 36px; position: relative; overflow: hidden;
+  background: rgba(255, 255, 255, .25); opacity: calc(1 - var(--intro, 0) * 3);
+}
+.intro-cue span {
+  position: absolute; left: 0; top: 0; width: 100%; height: 40%; background: var(--paper);
+  animation: cue 1.8s 1.2s var(--ease) infinite both;
+}
+@keyframes cue { from { transform: translateY(-100%); } to { transform: translateY(260%); } }
+
+/* Scroll progress: a hairline under the header. */
+.nav { position: sticky; }
+.progress {
+  position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: var(--paper);
+  transform: scaleX(0); transform-origin: left; opacity: .9; pointer-events: none;
+}
+
+/* Heading full stops pop in once the heading arrives. */
+.section-head h2 > span:last-child { display: inline-block; transform: scale(0); transform-origin: 50% 80%;
+  transition: transform .55s cubic-bezier(.3, 1.6, .5, 1) .35s; }
+.section-head.in h2 > span:last-child, .no-js .section-head h2 > span:last-child { transform: none; }
+
+/* Feature list: the top rule draws across. */
+.features { border-top: 0; position: relative; }
+.features::before {
+  content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1.5px; background: var(--ink);
+  transform: scaleX(0); transform-origin: left; transition: transform 1.2s var(--ease);
+}
+.features.in::before, .no-js .features::before { transform: none; }
+
+/* Contact rows slide in one after another. */
+.contact li { opacity: 0; transform: translateX(-28px);
+  transition: opacity .7s var(--ease) var(--d, 0s), transform .7s var(--ease) var(--d, 0s); }
+.contact.in li, .no-js .contact li { opacity: 1; transform: none; }
+
+/* Setup step numbers pop. */
+.steps li::before { transform: scale(.3); opacity: 0;
+  transition: transform .6s cubic-bezier(.3, 1.6, .5, 1) calc(var(--d, 0s) + .25s), opacity .3s ease calc(var(--d, 0s) + .25s); }
+.steps li.in::before, .no-js .steps li::before { transform: none; opacity: 1; }
+
+/* Card icons lift a little on hover. */
+.card .icon { transition: transform .5s var(--ease), box-shadow .45s var(--ease); }
+.card:hover .icon, .card:focus-visible .icon { transform: translateY(-4px) rotate(-5deg); }
+
+/* Screenshots drift slightly against the scroll (main.js sets --py). */
+.shot-img img { transform: translateY(var(--py, 0px)); }
+.shot-img:hover img { transform: translateY(calc(var(--py, 0px) - 6px)); }
+
+/* Buttons: a soft sheen sweeps across the main one on hover. */
+.btn.primary { position: relative; overflow: hidden; isolation: isolate; }
+.btn.primary::after {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: linear-gradient(110deg, transparent 35%, rgba(255, 255, 255, .28) 50%, transparent 65%);
+  transform: translateX(-120%); transition: transform .8s var(--ease);
+}
+.btn.primary:hover::after { transform: translateX(120%); }
+
+@media (max-width: 720px) {
+  .intro-cue { margin-bottom: 28px; height: 52px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .contact li, .steps li::before, .section-head h2 > span:last-child, .features::before { opacity: 1 !important; transform: none !important; }
+  .intro-cue span { display: none; }
+}

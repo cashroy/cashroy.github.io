@@ -4,14 +4,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>cashroy</title>
-  <meta name="description" content="Apps by cashroy: CashVoice and UniNote.">
+  <meta name="description" content="Apps and Minecraft plugins by cashroy: CashVoice, UniNote, Paper Waystones and ShulkerVaccuum.">
   <meta name="theme-color" content="#e10600">
   <link rel="canonical" href="https://cashroy.github.io/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="cashroy">
   <meta property="og:url" content="https://cashroy.github.io/">
   <meta property="og:title" content="cashroy">
-  <meta property="og:description" content="Apps by cashroy: CashVoice and UniNote.">
+  <meta property="og:description" content="Apps and Minecraft plugins by cashroy: CashVoice, UniNote, Paper Waystones and ShulkerVaccuum.">
   <meta property="og:image" content="https://cashroy.github.io/og.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -26,20 +26,24 @@
 <body>
   <header class="nav">
     <div class="wrap">
-      <a class="brand" href="./">cashroy<span class="dot">.</span></a>
+      <a class="brand" href="./"><span class="tall">cashroy<span class="dot">.</span></span></a>
       <nav class="nav-links" aria-label="Main">
         <a href="#apps">Apps</a>
+        <a href="#plugins">Plugins</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
   </header>
 
+  <!-- Landing: the logo fills the first screen, then flies into the header as you scroll (main.js). -->
+  <div class="mega" aria-hidden="true">
+    <span class="tall"><span class="l" style="--i:0">c</span><span class="l" style="--i:1">a</span><span class="l" style="--i:2">s</span><span class="l" style="--i:3">h</span><span class="l" style="--i:4">r</span><span class="l" style="--i:5">o</span><span class="l" style="--i:6">y</span><span class="l dot" style="--i:7">.</span></span>
+  </div>
+
   <main>
-    <div class="hero home-hero">
-      <div class="wrap">
-        <h1><span class="line rise" style="--d:.08s">cashroy<span class="red">.</span></span></h1>
-        <span class="underline-draw" aria-hidden="true"></span>
-      </div>
+    <div class="hero intro">
+      <h1 class="sr-only">cashroy</h1>
+      <a class="intro-cue" href="#apps" aria-label="Scroll to apps"><span></span></a>
     </div>
 
     <section id="apps" style="padding-top:0">
@@ -53,8 +57,8 @@
             <span class="arrow" aria-hidden="true">→</span>
             <img class="icon" src="cashvoice/icon.svg" alt="" width="56" height="56">
             <h3>CashVoice</h3>
-            <p>Voice changer and soundboard for Windows. Works in Discord, games, anything that uses your mic.</p>
-            <div class="tags"><span class="tag">Windows</span></div>
+            <p>Voice changer and soundboard for Windows and Mac. Works in Discord, games, anything that uses your mic.</p>
+            <div class="tags"><span class="tag">Windows</span><span class="tag">macOS</span></div>
           </a>
 
           <a class="card reveal" style="--d:.1s" href="uninote/">
@@ -69,6 +73,32 @@
             <span class="arrow" aria-hidden="true">→</span>
             <h3>More on GitHub</h3>
             <p>Everything else I'm working on.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="plugins" style="padding-top:0">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <h2>Minecraft plugins<span class="red">.</span></h2>
+        </div>
+
+        <div class="cards">
+          <a class="card reveal" href="https://github.com/cashroy/PaperWaystones">
+            <span class="arrow" aria-hidden="true">→</span>
+            <img class="icon" src="assets/waystones-icon.svg" alt="" width="56" height="56">
+            <h3>Paper Waystones</h3>
+            <p>Server-side waystones with no client mods: sharestones, warp plates, scrolls, wild waystones in new chunks, and a resource pack sent automatically.</p>
+            <div class="tags"><span class="tag">Paper</span><span class="tag">1.21.4 – 26.3</span></div>
+          </a>
+
+          <a class="card reveal" href="https://github.com/cashroy/ShulkerVaccuum">
+            <span class="arrow" aria-hidden="true">→</span>
+            <img class="icon" src="assets/shulker-icon.svg" alt="" width="56" height="56">
+            <h3>ShulkerVaccuum</h3>
+            <p>Two new shulker boxes: Vacuum stores what you mine and pick up, Trash deletes it. Keeps the box's colour and contents.</p>
+            <div class="tags"><span class="tag">Spigot</span><span class="tag">Paper</span><span class="tag">Purpur</span><span class="tag">1.17 – 26.3</span></div>
           </a>
         </div>
       </div>

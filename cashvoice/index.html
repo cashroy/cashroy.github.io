@@ -10,8 +10,8 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="cashroy">
   <meta property="og:url" content="https://cashroy.github.io/cashvoice/">
-  <meta property="og:title" content="CashVoice: voice changer + soundboard for Windows">
-  <meta property="og:description" content="Free system-wide voice changer and soundboard. Works in Discord, OBS and games through your real mic, with no virtual cable.">
+  <meta property="og:title" content="CashVoice: voice changer + soundboard for Windows and Mac">
+  <meta property="og:description" content="Free voice changer and soundboard for Windows and Mac. Works in Discord, OBS, Zoom and games.">
   <meta property="og:image" content="https://cashroy.github.io/cashvoice/og.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -26,7 +26,7 @@
 <body>
   <header class="nav">
     <div class="wrap">
-      <a class="brand" href="../">cashroy<span class="dot">.</span></a>
+      <a class="brand" href="../"><span class="tall">cashroy<span class="dot">.</span></span></a>
       <nav class="nav-links" aria-label="Main">
         <a href="../#apps">Apps</a>
         <a href="https://github.com/cashroy/CashVoice">Source</a>
@@ -39,7 +39,7 @@
       <div class="wrap">
         <div class="top rise">
           <img class="app-icon" src="icon.svg" alt="CashVoice icon" width="96" height="96">
-          <span class="eyebrow">Voice changer + soundboard · Windows</span>
+          <span class="eyebrow">Voice changer + soundboard · Windows &amp; Mac</span>
         </div>
         <h1><span class="rise" style="--d:.08s">CashVoice<span class="red">.</span></span></h1>
         <span class="underline-draw" aria-hidden="true"></span>
@@ -48,14 +48,17 @@
           Discord, OBS and games pick it up like normal. No virtual cable to set up.
         </p>
         <div class="btns rise" style="--d:.34s">
-          <a class="btn primary big" data-dl href="https://github.com/cashroy/CashVoice/releases/latest/download/CashVoice-Setup.exe">
+          <a class="btn primary big" data-dl data-os="win" href="https://github.com/cashroy/CashVoice/releases/latest/download/CashVoice-Setup.exe">
             <svg class="down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12M6 10l6 6 6-6M4 20h16"/></svg>
             Download for Windows
           </a>
-          <a class="btn" href="https://github.com/cashroy/CashVoice">View on GitHub</a>
+          <a class="btn big" data-dl data-os="mac" href="https://github.com/cashroy/CashVoice/releases/latest/download/CashVoice-mac.pkg">
+            <svg class="down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12M6 10l6 6 6-6M4 20h16"/></svg>
+            Download for Mac
+          </a>
         </div>
-        <p class="fineprint muted rise" style="--d:.42s"><span id="cv-version">Early release</span> · Free · Windows 10 &amp; 11 · x64 and ARM64</p>
-        <p class="phone-note rise" style="--d:.46s">On your phone? Open this page on your Windows PC to install it.</p>
+        <p class="fineprint muted rise" style="--d:.42s"><span id="cv-version">Early release</span> · Free · Windows 10 &amp; 11 (x64, ARM64) · macOS 13+ (Apple silicon, Intel) · <a href="https://github.com/cashroy/CashVoice">Source</a></p>
+        <p class="phone-note rise" style="--d:.46s">On your phone? Open this page on your PC or Mac to install it.</p>
       </div>
     </div>
 
@@ -100,6 +103,7 @@
             <h2>Setup<span class="red">.</span></h2>
           </div>
         </div>
+        <h3 class="setup-os reveal">Windows</h3>
         <ol class="steps">
           <li class="reveal"><h3>Install</h3><p>Run <strong>CashVoice-Setup.exe</strong> and allow the admin prompt.</p></li>
           <li class="reveal" style="--d:.06s"><h3>Settings</h3><p>Open CashVoice from the tray and go to <strong>Settings</strong>.</p></li>
@@ -109,8 +113,20 @@
         <div class="callout reveal">
           <p><strong>Heads up:</strong> the installer isn't code-signed yet, so Windows SmartScreen may warn you. Choose <em>More info → Run anyway</em>. To undo everything, untick your mic and Apply, or just uninstall.</p>
         </div>
+
+        <h3 class="setup-os reveal">Mac</h3>
+        <ol class="steps">
+          <li class="reveal"><h3>Install</h3><p>Open <strong>CashVoice-mac.pkg</strong>. If macOS blocks it, go to <em>System Settings → Privacy &amp; Security</em> and click <strong>Open Anyway</strong>.</p></li>
+          <li class="reveal" style="--d:.06s"><h3>Allow the mic</h3><p>CashVoice opens in the menu bar. Allow microphone access when macOS asks.</p></li>
+          <li class="reveal" style="--d:.12s"><h3>Pick CashVoice Mic</h3><p>In Discord, OBS, Zoom or a game, choose <strong>CashVoice Mic</strong> as the microphone.</p></li>
+          <li class="reveal" style="--d:.18s"><h3>Talk</h3><p>Pick a voice in CashVoice. Your real mic is only used while an app is listening to CashVoice Mic.</p></li>
+        </ol>
+        <div class="callout reveal">
+          <p><strong>Heads up:</strong> the Mac version isn't notarised yet, hence the one-time <em>Open Anyway</em>. To remove it, run <code>sudo bash uninstall.sh</code> from the <a href="https://github.com/cashroy/CashVoice/tree/main/mac">source</a>.</p>
+        </div>
         <div class="btns reveal">
-          <a class="btn primary" data-dl href="https://github.com/cashroy/CashVoice/releases/latest/download/CashVoice-Setup.exe">Download CashVoice</a>
+          <a class="btn primary" data-dl data-os="win" href="https://github.com/cashroy/CashVoice/releases/latest/download/CashVoice-Setup.exe">Download for Windows</a>
+          <a class="btn" data-dl data-os="mac" href="https://github.com/cashroy/CashVoice/releases/latest/download/CashVoice-mac.pkg">Download for Mac</a>
           <a class="btn" href="https://github.com/cashroy/CashVoice/releases">All releases</a>
         </div>
       </div>
@@ -125,6 +141,18 @@
   </footer>
   <script src="../assets/main.js"></script>
   <script>
+    // On a Mac, make the Mac download the main button.
+    (function () {
+      var mac = /Macintosh|Mac OS X/.test(navigator.userAgent) && !/iPhone|iPad/.test(navigator.userAgent) && navigator.maxTouchPoints < 2;
+      if (!mac) return;
+      document.querySelectorAll(".btns").forEach(function (row) {
+        var w = row.querySelector('a[data-os="win"]'), m = row.querySelector('a[data-os="mac"]');
+        if (!w || !m) return;
+        w.classList.remove("primary"); m.classList.add("primary");
+        row.insertBefore(m, w);
+      });
+    })();
+
     // Until the first GitHub release exists, don't send people to a 404.
     (function () {
       fetch("https://api.github.com/repos/cashroy/CashVoice/releases/latest", { headers: { Accept: "application/vnd.github+json" } })
