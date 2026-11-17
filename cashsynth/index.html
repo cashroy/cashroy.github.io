@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cash Synth</title>
+  <meta name="description" content="Cash Synth: a money-themed synthesizer plugin (VST3, AU, Standalone). Cash Match listens to a sample and the MINT rebuilds it from sine partials and noise, playable on any key.">
+  <meta name="theme-color" content="#e10600">
+  <link rel="canonical" href="https://cashroy.github.io/cashsynth/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="cashroy">
+  <meta property="og:url" content="https://cashroy.github.io/cashsynth/">
+  <meta property="og:title" content="Cash Synth: a synth on a $100 bill">
+  <meta property="og:description" content="VST3, AU and Standalone. Drop in a sample and Cash Match rebuilds it from sine partials and noise, then you play it on any key.">
+  <meta property="og:image" content="https://cashroy.github.io/cashsynth/shots/editor.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="icon.svg">
+  <link rel="preload" href="../assets/fonts/LTSuperior-Black.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="../assets/fonts/LTSuperior-Regular.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap">
+      <a class="brand" href="../">cashroy<span class="dot">.</span></a>
+      <nav class="nav-links" aria-label="Main">
+        <a href="../#apps">Apps</a>
+        <a href="https://github.com/cashroy/cash-synth">Source</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="hero product-hero">
+      <div class="wrap">
+        <div class="top rise">
+          <img class="app-icon" src="icon.svg" alt="Cash Synth icon" width="96" height="96">
+          <span class="eyebrow">Synth plugin · VST3, AU &amp; Standalone</span>
+        </div>
+        <h1><span class="rise" style="--d:.08s">Cash Synth<span class="red">.</span></span></h1>
+        <span class="underline-draw" aria-hidden="true"></span>
+        <p class="lede rise" style="--d:.22s">
+          A synth on a $100 bill. Drop in a sample and <strong>Cash Match</strong> rebuilds it:
+          the <strong>MINT</strong> measures it into sine partials and noise, then plays it on any key.
+        </p>
+        <div class="btns rise" style="--d:.34s">
+          <a class="btn primary big" href="https://github.com/cashroy/cash-synth">View on GitHub</a>
+          <a class="btn" href="https://github.com/cashroy/cash-synth#building">Build it</a>
+        </div>
+        <p class="fineprint muted rise" style="--d:.42s">Free · macOS &amp; Windows · built with JUCE 8 · build from source</p>
+      </div>
+    </div>
+
+    <section id="features" style="padding-top:0">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div><h2>What it does<span class="red">.</span></h2></div>
+        </div>
+        <div class="features">
+          <div class="feature reveal"><h3>Cash Match</h3><p>Load a sample up to 10 seconds long. A cheque shows how close the match is, part by part, and DEPOSIT puts it on the bill.</p></div>
+          <div class="feature reveal" style="--d:.06s"><h3>The MINT</h3><p>Up to 128 sine partials plus shaped noise, measured from your sample. The synth makes the sound itself; it never plays the sample back.</p></div>
+          <div class="feature reveal" style="--d:.12s"><h3>Still a synth</h3><p>Matched sounds keep the amp envelope, LFOs, filter, drive, glide, unison, delay and reverb. Skip into the attack or resize the held loop.</p></div>
+          <div class="feature reveal"><h3>Money moves</h3><p>Invest coins nudge the sound, the Risk dial sets how wild, the seal hits the Jackpot. Every move can be undone, and you can bank up to 8 sounds in the vault.</p></div>
+          <div class="feature reveal" style="--d:.06s"><h3>Locks and codes</h3><p>Padlock any knob so the money moves leave it alone. Every sound is also a CashCode you can copy and paste.</p></div>
+          <div class="feature reveal" style="--d:.12s"><h3>In time</h3><p>LFOs, delay and reverb pre-delay sync to the host tempo and lock to the song position.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="band" id="screenshots">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div><h2>Pictures<span style="color:var(--ink)">.</span></h2></div>
+        </div>
+        <div class="shots plugin-shots reveal">
+          <figure class="shot-img wide"><a href="shots/editor.png"><img src="shots/editor.png" alt="Cash Synth front panel: a $100 bill with a live scope, Jackpot seal, invest coins, risk dial, ledger and vault" width="1600" height="1053" loading="lazy"></a><figcaption>The front of the bill</figcaption></figure>
+          <figure class="shot-img"><a href="shots/editor-back-fx.png"><img src="shots/editor-back-fx.png" alt="The back of the bill: delay, reverb and the MINT row" width="1600" height="1053" loading="lazy"></a><figcaption>Effects and the MINT</figcaption></figure>
+          <figure class="shot-img"><a href="shots/editor-match.png"><img src="shots/editor-match.png" alt="The Cash Match cheque with a match percentage and per-part scores" width="1600" height="1053" loading="lazy"></a><figcaption>Cash Match</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="setup">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div><h2>Setup<span class="red">.</span></h2></div>
+        </div>
+        <ol class="steps">
+          <li class="reveal"><h3>Get the code</h3><p>Clone <strong>cashroy/cash-synth</strong> from GitHub.</p></li>
+          <li class="reveal" style="--d:.06s"><h3>Build</h3><p>CMake and a C++20 compiler (Xcode tools on Mac, Visual Studio 2022 on Windows). JUCE comes down by itself.</p></li>
+          <li class="reveal" style="--d:.12s"><h3>Open your DAW</h3><p>The VST3 and AU are copied into your plug-in folders. There's a standalone app too.</p></li>
+          <li class="reveal" style="--d:.18s"><h3>Cash in</h3><p>Hit <strong>CASH MATCH</strong>, drop in a sample, and play it on any key.</p></li>
+        </ol>
+        <div class="btns reveal">
+          <a class="btn primary" href="https://github.com/cashroy/cash-synth">View on GitHub</a>
+          <a class="btn" href="https://github.com/cashroy/cash-synth#building">Build steps</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>© <span id="year">2026</span> cashroy</span>
+      <a href="../#apps">← All apps</a>
+    </div>
+  </footer>
+  <script src="../assets/main.js"></script>
+</body>
+</html>
