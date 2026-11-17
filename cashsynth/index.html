@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Cash Synth</title>
-  <meta name="description" content="Cash Synth: a money-themed synthesizer plugin (VST3, AU, Standalone). Cash Match listens to a sample and the MINT rebuilds it from sine partials and noise, playable on any key.">
+  <meta name="description" content="Cash Synth: a free money-themed synthesizer plugin for Mac and Windows (VST3, AU, Standalone). Cash Match rebuilds any sample, as an exact MINT copy or as editable LAYERS, playable on any key.">
   <meta name="theme-color" content="#e10600">
   <link rel="canonical" href="https://cashroy.github.io/cashsynth/">
   <meta property="og:type" content="website">
@@ -40,14 +40,23 @@
         <h1><span class="rise" style="--d:.08s">Cash Synth<span class="red">.</span></span></h1>
         <span class="underline-draw" aria-hidden="true"></span>
         <p class="lede rise" style="--d:.22s">
-          A synth on a $100 bill. Drop in a sample and <strong>Cash Match</strong> rebuilds it:
-          the <strong>MINT</strong> measures it into sine partials and noise, then plays it on any key.
+          A synth on a $100 bill. Drop in a sample and <strong>Cash Match</strong> rebuilds it twice:
+          the <strong>MINT</strong>, an exact copy made of sine partials and noise, and <strong>LAYERS</strong>,
+          a patch of normal synth parts you can edit. Both play on any key.
         </p>
         <div class="btns rise" style="--d:.34s">
-          <a class="btn primary big" href="https://github.com/cashroy/cash-synth">View on GitHub</a>
-          <a class="btn" href="https://github.com/cashroy/cash-synth#building">Build it</a>
+          <a class="btn primary big" data-dl data-os="win" href="https://github.com/cashroy/cash-synth/releases/latest/download/CashSynth-Setup.exe">
+            <svg class="down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12M6 10l6 6 6-6M4 20h16"/></svg>
+            Download for Windows
+          </a>
+          <a class="btn big" data-dl data-os="mac" href="https://github.com/cashroy/cash-synth/releases/latest/download/CashSynth-mac.pkg">
+            <svg class="down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12M6 10l6 6 6-6M4 20h16"/></svg>
+            Download for Mac
+          </a>
+          <a class="btn big" href="https://github.com/cashroy/cash-synth/releases">All releases</a>
         </div>
-        <p class="fineprint muted rise" style="--d:.42s">Free · macOS &amp; Windows · built with JUCE 8 · build from source</p>
+        <p class="fineprint muted rise" style="--d:.42s"><span id="cs-version">Version 1.0</span> · Free · Windows 10 &amp; 11 (x64) · macOS 11+ (Apple silicon, Intel) · built with JUCE 8 · <a href="https://github.com/cashroy/cash-synth">Source</a></p>
+        <p class="phone-note rise" style="--d:.46s">On your phone? Open this page on your PC or Mac to install it.</p>
       </div>
     </div>
 
@@ -59,10 +68,11 @@
         <div class="features">
           <div class="feature reveal"><h3>Cash Match</h3><p>Load a sample up to 10 seconds long. A cheque shows how close the match is, part by part, and DEPOSIT puts it on the bill.</p></div>
           <div class="feature reveal" style="--d:.06s"><h3>The MINT</h3><p>Up to 128 sine partials plus shaped noise, measured from your sample. The synth makes the sound itself; it never plays the sample back.</p></div>
-          <div class="feature reveal" style="--d:.12s"><h3>Still a synth</h3><p>Matched sounds keep the amp envelope, LFOs, filter, drive, glide, unison, delay and reverb. Skip into the attack or resize the held loop.</p></div>
-          <div class="feature reveal"><h3>Money moves</h3><p>Invest coins nudge the sound, the Risk dial sets how wild, the seal hits the Jackpot. Every move can be undone, and you can bank up to 8 sounds in the vault.</p></div>
-          <div class="feature reveal" style="--d:.06s"><h3>Locks and codes</h3><p>Padlock any knob so the money moves leave it alone. Every sound is also a CashCode you can copy and paste.</p></div>
-          <div class="feature reveal" style="--d:.12s"><h3>In time</h3><p>LFOs, delay and reverb pre-delay sync to the host tempo and lock to the song position.</p></div>
+          <div class="feature reveal" style="--d:.12s"><h3>LAYERS</h3><p>The same match as an editable patch: up to 8 wavetable layers and 2 noise bands, each with its own tuning, envelope, filter and LFO depths. Every one is a normal knob you can automate.</p></div>
+          <div class="feature reveal"><h3>Still a synth</h3><p>Matched sounds keep the amp envelope, LFOs, filter, drive, glide, unison, delay and reverb. Skip into the attack or resize the held loop.</p></div>
+          <div class="feature reveal" style="--d:.06s"><h3>Money moves</h3><p>Invest coins nudge the sound, the Risk dial sets how wild, the seal hits the Jackpot. Every move can be undone, and you can bank up to 8 sounds in the vault.</p></div>
+          <div class="feature reveal" style="--d:.12s"><h3>Locks and codes</h3><p>Padlock any knob so the money moves leave it alone. Every sound is also a CashCode you can copy and paste.</p></div>
+          <div class="feature reveal"><h3>In time</h3><p>LFOs, delay and reverb pre-delay sync to the host tempo and lock to the song position.</p></div>
         </div>
       </div>
     </section>
@@ -75,6 +85,7 @@
         <div class="shots plugin-shots reveal">
           <figure class="shot-img wide"><a href="shots/editor.png"><img src="shots/editor.png" alt="Cash Synth front panel: a $100 bill with a live scope, Jackpot seal, invest coins, risk dial, ledger and vault" width="1600" height="1053" loading="lazy"></a><figcaption>The front of the bill</figcaption></figure>
           <figure class="shot-img"><a href="shots/editor-back-fx.png"><img src="shots/editor-back-fx.png" alt="The back of the bill: delay, reverb and the MINT row" width="1600" height="1053" loading="lazy"></a><figcaption>Effects and the MINT</figcaption></figure>
+          <figure class="shot-img"><a href="shots/editor-back-layers.png"><img src="shots/editor-back-layers.png" alt="The LAYERS page: layer tabs, a wavetable view and one layer's tone, envelope, filter and LFO knobs" width="1600" height="1053" loading="lazy"></a><figcaption>The LAYERS page</figcaption></figure>
           <figure class="shot-img"><a href="shots/editor-match.png"><img src="shots/editor-match.png" alt="The Cash Match cheque with a match percentage and per-part scores" width="1600" height="1053" loading="lazy"></a><figcaption>Cash Match</figcaption></figure>
         </div>
       </div>
@@ -86,14 +97,18 @@
           <div><h2>Setup<span class="red">.</span></h2></div>
         </div>
         <ol class="steps">
-          <li class="reveal"><h3>Get the code</h3><p>Clone <strong>cashroy/cash-synth</strong> from GitHub.</p></li>
-          <li class="reveal" style="--d:.06s"><h3>Build</h3><p>CMake and a C++20 compiler (Xcode tools on Mac, Visual Studio 2022 on Windows). JUCE comes down by itself.</p></li>
-          <li class="reveal" style="--d:.12s"><h3>Open your DAW</h3><p>The VST3 and AU are copied into your plug-in folders. There's a standalone app too.</p></li>
+          <li class="reveal"><h3>Download</h3><p><strong>CashSynth-Setup.exe</strong> on Windows, <strong>CashSynth-mac.pkg</strong> on a Mac.</p></li>
+          <li class="reveal" style="--d:.06s"><h3>Install</h3><p>Pick VST3, AU (Mac) and the standalone app, or keep them all. On Windows, if SmartScreen appears, click <em>More info → Run anyway</em>.</p></li>
+          <li class="reveal" style="--d:.12s"><h3>Open your DAW</h3><p>Rescan plug-ins and add <strong>Cash Synth</strong> as an instrument. Logic finds it on its next launch.</p></li>
           <li class="reveal" style="--d:.18s"><h3>Cash in</h3><p>Hit <strong>CASH MATCH</strong>, drop in a sample, and play it on any key.</p></li>
         </ol>
+        <div class="callout reveal">
+          <p><strong>Heads up:</strong> the installers aren't signed by Apple or Microsoft yet. On a Mac, if the pkg won't open, go to <em>System Settings → Privacy &amp; Security</em> and click <strong>Open Anyway</strong>. Prefer to build it yourself? The <a href="https://github.com/cashroy/cash-synth#building">build steps</a> are on GitHub.</p>
+        </div>
         <div class="btns reveal">
-          <a class="btn primary" href="https://github.com/cashroy/cash-synth">View on GitHub</a>
-          <a class="btn" href="https://github.com/cashroy/cash-synth#building">Build steps</a>
+          <a class="btn primary" data-dl data-os="win" href="https://github.com/cashroy/cash-synth/releases/latest/download/CashSynth-Setup.exe">Download for Windows</a>
+          <a class="btn" data-dl data-os="mac" href="https://github.com/cashroy/cash-synth/releases/latest/download/CashSynth-mac.pkg">Download for Mac</a>
+          <a class="btn" href="https://github.com/cashroy/cash-synth/releases">All releases</a>
         </div>
       </div>
     </section>
@@ -106,5 +121,40 @@
     </div>
   </footer>
   <script src="../assets/main.js"></script>
+  <script>
+    // On a Mac, make the Mac download the main button.
+    (function () {
+      var mac = /Macintosh|Mac OS X/.test(navigator.userAgent) && !/iPhone|iPad/.test(navigator.userAgent) && navigator.maxTouchPoints < 2;
+      if (!mac) return;
+      document.querySelectorAll(".btns").forEach(function (row) {
+        var w = row.querySelector('a[data-os="win"]'), m = row.querySelector('a[data-os="mac"]');
+        if (!w || !m) return;
+        w.classList.remove("primary"); m.classList.add("primary");
+        row.insertBefore(m, w);
+      });
+    })();
+
+    // Show the latest version; if there's no release yet, don't send people to a 404.
+    (function () {
+      fetch("https://api.github.com/repos/cashroy/cash-synth/releases/latest", { headers: { Accept: "application/vnd.github+json" } })
+        .then(function (r) {
+          if (r.status === 404) {
+            document.querySelectorAll("a[data-dl]").forEach(function (a) {
+              a.removeAttribute("href");
+              a.setAttribute("aria-disabled", "true");
+              a.classList.add("soon");
+              a.lastChild.textContent = " Coming soon";
+            });
+            document.getElementById("cs-version").textContent = "First release coming soon";
+            return null;
+          }
+          return r.ok ? r.json() : null;
+        })
+        .then(function (rel) {
+          if (rel && rel.tag_name) document.getElementById("cs-version").textContent = "Version " + rel.tag_name.replace(/^v/, "");
+        })
+        .catch(function () { /* offline or rate-limited: keep the normal link */ });
+    })();
+  </script>
 </body>
 </html>
